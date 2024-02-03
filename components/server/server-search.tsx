@@ -16,11 +16,11 @@ interface ServerSearchProps {
     data: { 
         label: string;
         type: "channel" | "member";
-        data: {
+        data?: {
             icon: React.ReactNode;
             name: string;
             id: string;
-        }[] | undefined
+        }[]  
     }[]
 }
 
@@ -41,7 +41,7 @@ export const ServerSearch = ( { data } : ServerSearchProps ) => {
         document.addEventListener("keydown", down);
 
         return () => document.removeEventListener("keydown", down);
-    })
+    }, [])
 
     const onClick = ({ id, type }: { id: string, type: "channel" | "member" }) => {
         setOpen(false);
